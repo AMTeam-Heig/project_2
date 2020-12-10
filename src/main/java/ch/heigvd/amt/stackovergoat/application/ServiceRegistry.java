@@ -15,6 +15,7 @@ import ch.heigvd.amt.stackovergoat.domain.comment.ICommentRepository;
 import ch.heigvd.amt.stackovergoat.domain.question.IQuestionRepository;
 import ch.heigvd.amt.stackovergoat.domain.user.IUserRepository;
 import ch.heigvd.amt.stackovergoat.domain.vote.IVoteRepository;
+import ch.heigvd.amt.stackovergoat.gamification.GamificationClient;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -68,6 +69,9 @@ public class ServiceRegistry {
     private static StatsFacade statsFacade;
     // Identity management
     private static IdentityManagementFacade identityManagementFacade;
+
+    // Gamification Application
+    private GamificationClient gamificationClient;
 /*
     public static ServiceRegistry getServiceRegistry() {
         if (singleton == null) {
@@ -178,6 +182,7 @@ public class ServiceRegistry {
         questionFacade = new QuestionFacade(questionRepository, questionCommentRepository, questionVoteRepository);
         identityManagementFacade = new IdentityManagementFacade(userRepository);
         statsFacade = new StatsFacade(questionRepository,userRepository);
+        gamificationClient = new GamificationClient("StackOvergoat");
     }
 
     public QuestionFacade getQuestionFacade() {
@@ -203,5 +208,6 @@ public class ServiceRegistry {
         return questionVoteFacade;
     }
     public IdentityManagementFacade getIdentityManagementFacade() { return identityManagementFacade; }
+    public GamificationClient getGamificationClient() { return gamificationClient; }
 
 }

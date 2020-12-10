@@ -1,6 +1,5 @@
 package ch.heigvd.amt.stackovergoat.application.user;
 
-import ch.heigvd.amt.stackovergoat.domain.question.QuestionId;
 import ch.heigvd.amt.stackovergoat.domain.user.User;
 import ch.heigvd.amt.stackovergoat.domain.user.IUserRepository;
 import ch.heigvd.amt.stackovergoat.domain.user.UserId;

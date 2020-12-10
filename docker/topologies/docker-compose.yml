@@ -2,6 +2,7 @@ version: '3'
 services:
   gamification:
     image: stellucidam/amt-gamification
+    container_name: amt_gamification
     ports:
     - "9081:9081"
     - "9444:9444"
@@ -15,6 +16,7 @@ services:
       - mysql:db
     depends_on:
       - mysql
+      - gamification
   mysql:
     build: ../images/mysql
     ports:

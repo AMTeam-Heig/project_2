@@ -12,7 +12,6 @@ import java.io.IOException;
 public class AuthorizationFilter implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) resp;
 
         if(isPublicResource(request.getRequestURI())) {
             chain.doFilter(req, resp);
