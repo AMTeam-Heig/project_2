@@ -1,0 +1,31 @@
+version: '3'
+services:
+  openliberty:
+    build: ../images/openliberty
+    ports:
+      - "9080:9080"
+      - "9443:9443"
+    links:
+      - mysql:db
+    depends_on:
+      - mysql
+  mysql:
+    build: ../images/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
+    volumes:
+      - ../images/mysql/database:/docker-entrypoint-initdb.d
+  phpmyadmin:
+    build: ../images/phpmyadmin
+    ports:
+      - "6060:80"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    links:
+      - mysql:db
+    depends_on:
+      - mysql

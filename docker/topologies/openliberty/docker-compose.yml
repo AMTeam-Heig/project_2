@@ -1,0 +1,30 @@
+version: '3'
+services:
+  openliberty:
+    image: ghcr.io/amteam-heig/project_01/stackover-goat/stackovergoat:latest
+
+    ports:
+      - "9080:9080"
+      - "9443:9443"
+    links:
+      - mysql:db
+    depends_on:
+      - mysql
+  mysql:
+    build: ../images/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
+    volumes:
+      - ../images/mysql/database:/docker-entrypoint-initdb.d
+  phpmyadmin:
+    build: ../images/phpmyadmin
+    ports:
+      - "6060:80"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    links:
+      - mysql:db
+    depends_on:
+      - mysql

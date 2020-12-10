@@ -1,0 +1,23 @@
+<server description="first Liberty server">
+    <featureManager>
+        <feature>webProfile-8.0</feature>
+    </featureManager>
+    <variable name="default.http.port" defaultValue="9080"/>
+    <variable name="default.https.port" defaultValue="9443"/>
+    <webApplication location="Project_01.war" contextRoot="/"/>
+
+
+    <httpEndpoint host="*" httpPort="${default.http.port}"
+                  httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
+
+    <library id="MySqlLib">
+        <fileset dir="${server.config.dir}" includes="*.jar"/>
+    </library>
+
+    <dataSource jndiName="jdbc/StackOverflowDS">
+        <jdbcDriver libraryRef="MySqlLib"/>
+        <properties databaseName="amt_project_01"
+                    serverName="192.168.99.100" portNumber="3306"
+                    user="root" password="root"/>
+    </dataSource>
+</server>

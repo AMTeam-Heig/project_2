@@ -1,0 +1,83 @@
+body, p {
+    font-family: Calibri;
+    font-size: 20px;
+    color : #2e3133;
+    text-align: justify;
+    padding: 5px 10px 5px 10px;
+}
+
+.card {
+    padding: 5px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+input[type=text], select, textarea {
+    width: 80%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group {
+    text-align: center;
+}
+
+.answer-group {
+    background: #f9f9f9;
+    padding: 15px 15px 15px 15px;
+    margin : 15px 10px 15px 10px;
+    border-radius: 15px;
+}
+
+h1 {
+    font-family: Roboto;
+    font-size: 100px;
+    color : #46C39E;
+    background: #c9f1df;
+    margin : 10px 10px 10px 10px;
+    padding: 15px 5px 15px 5px;
+    border-radius: 100px;
+    text-align: center;
+}
+
+h2 {
+    font-family: Roboto;
+    font-size: 75px;
+    color : #E48725;
+    background: #F9C48C;
+    margin : 10px 10px 10px 10px;
+    padding: 10px 5px 10px 5px;
+    border-radius: 100px;
+    text-align: center;
+}
+
+h-comment-and-answer {
+    font-family: Roboto;
+    font-size: 20px;
+    color : #515151;
+    background: #b8b8b8;
+    margin : 10px 10px 10px 10px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+h-comment-of-answer {
+    font-family: Roboto;
+    font-size: 15px;
+    color : #515151;
+    background: #81c5e7;
+    margin : 10px 10px 10px 10px;
+    padding: 5px 8px 5px 8px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.h-answer {
+    width : 100%;
+    background: #ffffff;
+    margin : 0px 10px 0px 10px;
+    padding: 20px 15px 20px 15px;
+    border-radius: 10px;
+}

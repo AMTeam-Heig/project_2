@@ -1,0 +1,5 @@
+npx codeceptjs init :initialize
+npx codeceptjs gt : start a scenario
+npx codeceptjs run --steps : run all scenarios
+npx codeceptjs run --grep "test name" : run one specific scenario
+npx codeceptjs run-multiple basic : run with multiple browsers
