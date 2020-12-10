@@ -49,7 +49,7 @@ public class GamificationClient {
      */
     public Application createApplication(String name) {
         return Unirest.post(Endpoint.APPLICATIONS.getUrlValue())
-                .body(new AppCreation(name))
+                .body(new NewApplication(name))
                 .asObject(Application.class).getBody();
     }
 

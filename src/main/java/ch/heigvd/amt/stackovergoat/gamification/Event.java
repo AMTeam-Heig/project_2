@@ -5,14 +5,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
-
 @Getter
 @Setter
 @EqualsAndHashCode
 @Builder(toBuilder = true)
-public class Badge {
-    private LocalDate obtainedOnDate;
-    private String description;
+public class Event {
     private String name;
+    private int points;
+    private String username;
 }

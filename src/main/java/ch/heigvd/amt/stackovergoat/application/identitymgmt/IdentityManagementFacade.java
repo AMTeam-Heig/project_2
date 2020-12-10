@@ -42,7 +42,7 @@ public class IdentityManagementFacade {
 
     public CurrentUserDTO authenticate(AuthenticateCommand command) throws AuthentificationFailedException {
         User user = userRepository.findByUsername(command.getUsername())
-                .orElseThrow(() -> new AuthentificationFailedException("User not found"));
+                .orElseThrow(() -> new AuthentificationFailedException("GamificationUser not found"));
 
         boolean success = user.authenticate(command.getClearTextPassword());
         if(!success) {
@@ -73,7 +73,7 @@ public class IdentityManagementFacade {
             userRepository.updateProfile(command.getUsername(), command.getLastname(), command.getFirstname(), command.getEmail());
 
             User user = userRepository.findByUsername(command.getUsername())
-                    .orElseThrow(() -> new UpdateFailedException("User not found"));
+                    .orElseThrow(() -> new UpdateFailedException("GamificationUser not found"));
 
             CurrentUserDTO currentUser = CurrentUserDTO.builder()
                     .id(user.getId().asString())

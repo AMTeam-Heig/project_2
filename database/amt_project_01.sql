@@ -73,10 +73,10 @@ INSERT INTO `Question` (`idQuestion`, `text`, `author`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `User`
+-- Structure de la table `GamificationUser`
 --
 
-CREATE TABLE `User` (
+CREATE TABLE `GamificationUser` (
   `idUser` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `lastname` varchar(45) NOT NULL,
@@ -86,10 +86,10 @@ CREATE TABLE `User` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `User`
+-- Déchargement des données de la table `GamificationUser`
 --
 
-INSERT INTO `User` (`idUser`, `username`, `lastname`, `firstname`, `email`, `password`) VALUES
+INSERT INTO `GamificationUser` (`idUser`, `username`, `lastname`, `firstname`, `email`, `password`) VALUES
 ('14a31be5-d8de-4c30-9344-82aff5b0b5be', 'Walidou', 'Massaoudi', 'Walid', 'massaoulid@wawa.com', '$2a$10$CYd/XqbxhDj4pPmx/ppYjeHMdUyNP7sTVAzwLo9Txc/X0pn.53GV6'),
 ('1ba0d8b1-629e-4dfc-a199-92ac5c992a54', 'Clacla', 'Fleurimont', 'Clarisse', 'clarisse.fleu@gmail.com', '$2a$10$Y1Xhi4WdfSt/Zjcnu73o8.tISNSItdinu2smCLQCvmPkbsJJq.24y'),
 ('3c931011-d66c-4d06-a7ee-c20ba0cd84cf', 'CosmicElodie', 'Lagier', 'Elodie', 'elogier@mail.moi', '$2a$10$Wr7m6hyWJFqpD5sq9ISg/eSzaEcuCvxBwPmybyEuvX29XFWza9sny');

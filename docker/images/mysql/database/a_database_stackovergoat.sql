@@ -16,7 +16,7 @@ CREATE SCHEMA IF NOT EXISTS `amt_project_01` DEFAULT CHARACTER SET utf8 ;
 USE `amt_project_01` ;
 
 -- -----------------------------------------------------
--- Table `amt_project_01`.`User`
+-- Table `amt_project_01`.`GamificationUser`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `amt_project_01`.`User` ;
 

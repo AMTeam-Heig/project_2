@@ -7,6 +7,6 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class AppCreation {
+public class NewApplication {
     private String name;
 }

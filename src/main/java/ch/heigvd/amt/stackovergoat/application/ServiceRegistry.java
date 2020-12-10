@@ -59,7 +59,7 @@ public class ServiceRegistry {
     private IVoteRepository questionVoteRepository;
     private static VoteFacade questionVoteFacade;
 
-    // User
+    // GamificationUser
     @Inject
     @Named("JdbcUserRepository")
     private IUserRepository userRepository;
