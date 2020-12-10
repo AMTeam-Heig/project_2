@@ -10,7 +10,7 @@ import lombok.Setter;
 @EqualsAndHashCode
 @Builder(toBuilder = true)
 public class Event {
+    private String username;
     private String name;
     private int points;
-    private String username;
 }
