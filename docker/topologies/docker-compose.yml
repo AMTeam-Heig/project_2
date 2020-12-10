@@ -1,5 +1,11 @@
 version: '3'
 services:
+  gamification:
+    image: stellucidam/amt-gamification
+    ports:
+    - "9081:9081"
+    - "9444:9444"
+
   openliberty:
     build: ../images/openliberty
     ports:
