@@ -37,7 +37,7 @@ public class GamificationClient {
         try {
             currentApplication = createApplication(name);
             Unirest.config().addDefaultHeader("X-API-KEY", currentApplication.getApiKey());
-            Unirest.config().setDefaultBasicAuth("X-API-KEY", currentApplication.getApiKey());
+            //Unirest.config().setDefaultBasicAuth("X-API-KEY", currentApplication.getApiKey());
         } catch (UnirestException e) {
             Unirest.shutDown();
             e.printStackTrace();
