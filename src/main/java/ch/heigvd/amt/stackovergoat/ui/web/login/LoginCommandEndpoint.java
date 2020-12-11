@@ -5,6 +5,7 @@ import ch.heigvd.amt.stackovergoat.application.identitymgmt.IdentityManagementFa
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.AuthenticateCommand;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.AuthentificationFailedException;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
+import ch.heigvd.amt.stackovergoat.gamification.GamificationClient;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -23,11 +24,13 @@ public class LoginCommandEndpoint extends HttpServlet {
     @Named("ServiceRegistry")
     private ServiceRegistry serviceRegistry;// = ServiceRegistry.getServiceRegistry();
     private IdentityManagementFacade identityManagementFacade;// = serviceRegistry.getIdentityManagementFacade();
+    private GamificationClient gamificationClient;
 
     @Override
     public void init() throws ServletException {
         super.init();
         identityManagementFacade = serviceRegistry.getIdentityManagementFacade();
+        gamificationClient = serviceRegistry.getGamificationClient();
     }
 
 
@@ -36,6 +39,9 @@ public class LoginCommandEndpoint extends HttpServlet {
         req.getSession().removeAttribute("errors");
 
         CurrentUserDTO currentUserDTO = null;
+
+        // TODO
+        //System.out.println(gamificationClient.getApplications());
 
         AuthenticateCommand authenticateCommand = AuthenticateCommand.builder()
                 .username(req.getParameter("username"))

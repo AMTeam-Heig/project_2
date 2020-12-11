@@ -65,6 +65,11 @@ public class GamificationClient {
                 .asObject(Application.class).getBody();
     }
 
+    public List<Application> getApplications() {
+        return Unirest.get(Endpoint.APPLICATIONS.getUrlValue())
+                .asObject(new GenericType<List<Application>>() {}).getBody();
+    }
+
     /*
      * BADGES
      */

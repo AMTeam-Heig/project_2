@@ -75,6 +75,7 @@
                     </button>
                 </div>
             </form>
+
             <div align="center">
                 <c:forEach var="error" items="${errors}">
                     <div class="error">${error}</div>
