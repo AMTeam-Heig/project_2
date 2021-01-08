@@ -6,7 +6,8 @@ services:
     ports:
     - "9081:9081"
     - "9444:9444"
-
+    environment:
+    - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/gamification_engine?createDatabaseIfNotExist=true
   openliberty:
     build: ../images/openliberty
     ports:

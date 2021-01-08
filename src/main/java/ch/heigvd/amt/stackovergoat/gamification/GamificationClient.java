@@ -26,7 +26,7 @@ public class GamificationClient {
         }
     }
 
-    private String gamificationURL = "http://gamification:9081/";
+    private String gamificationURL = "http://192.168.99.100:9081/";
     private Application currentApplication;
 
     public GamificationClient(String name) {
