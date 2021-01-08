@@ -1,8 +1,12 @@
 version: '3'
 services:
+  gamification:
+    image: stellucidam/amt-gamification
+    ports:
+      - "9081:9081"
+      - "9444:9444"
   openliberty:
-    image: ghcr.io/amteam-heig/project_01/stackover-goat/stackovergoat:latest
-
+    build: ../images/openliberty
     ports:
       - "9080:9080"
       - "9443:9443"
