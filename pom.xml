@@ -13,6 +13,11 @@
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+    <openapi-generator-version>4.3.1</openapi-generator-version>
+    <swagger-core-version>1.6.2</swagger-core-version>
+    <okhttp-version>3.14.7</okhttp-version>
+    <gson-fire-version>1.8.4</gson-fire-version>
+    <junit.version>4.13.1</junit.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
@@ -122,6 +127,46 @@
         <artifactId>unirest-objectmapper-jackson</artifactId>
         <version>3.11.04</version>
       </dependency>
+    <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-annotations</artifactId>
+      <version>${swagger-core-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>${okhttp-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp3</groupId>
+      <artifactId>logging-interceptor</artifactId>
+      <version>${okhttp-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.gsonfire</groupId>
+      <artifactId>gson-fire</artifactId>
+      <version>${gson-fire-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.annotation</groupId>
+      <artifactId>javax.annotation-api</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>3.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <version>5.7.0</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -179,6 +224,31 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.openapitools</groupId>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <version>${openapi-generator-version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>src/main/resources/api-spec.yaml</inputSpec>
+              <language>java</language>
+              <library>okhttp-gson</library>
+              <configOptions>
+                <sourceFolder>.</sourceFolder>
+                <modelPackage>ch.heig.amt.gamification.api.dto</modelPackage>
+                <apiPackage>ch.heig.amt.gamification.api</apiPackage>
+                <dateLibrary>java8</dateLibrary>
+              </configOptions>
+              <output>target/generated-sources/openapi</output>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
 </project>

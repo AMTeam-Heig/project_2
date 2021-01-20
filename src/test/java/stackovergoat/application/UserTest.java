@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
-    private final String USERNAME = "Username";
+    /*private final String USERNAME = "Username";
     private final String FIRSTNAME = "Firstname";
     private final String LASTNAME = "Lastname";
     private final String EMAIL = "Email";
@@ -68,5 +68,5 @@ public class UserTest {
                 .build();
         UsersDTO usersDTO = userFacade.getUsers(usersQuery);
         assertEquals(USERNAME, usersDTO.getUsers().get(0).getUsername());
-    }
+    }*/
 }

@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommentTest {
-    private final int TEST_NBR = 1000;
+    /*private final int TEST_NBR = 1000;
 
     private final String QUESTION_TEXT = "Is this really a question ?";
     private final String QUESTION_AUTHOR = "Question author";
@@ -137,5 +137,5 @@ public class CommentTest {
     public void findWithQueryShouldReturnSomething() {
         assertDoesNotThrow(() -> commentFacade.proposeComment(proposeCommentCommand));
         assertEquals(commentFacade.getComments(CommentsQuery.builder().subjectId(commentFacade.getAllComments().getComments().get(0).getIdSubject()).build()), commentFacade.getAllComments());
-    }
+    }*/
 }

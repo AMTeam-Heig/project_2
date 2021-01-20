@@ -33,7 +33,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AnswerTest {
-    private final int TEST_NBR = 1000;
+    /*private final int TEST_NBR = 1000;
 
     private final String QUESTION_TEXT = "Is this really a question ?";
     private final String QUESTION_AUTHOR = "Question author";
@@ -113,11 +113,9 @@ public class AnswerTest {
 
     @Test
     public void userFacadeShouldStoreCorrectAnswer() {
-        /*
         answerFacade.proposeAnswer(proposeAnswerCommand);
         assertEquals(ANSWER_AUTHOR, answerFacade.getAllAnswers().getAnswers().get(0).getAuthor());
         assertEquals(ANSWER_TEXT, answerFacade.getAllAnswers().getAnswers().get(0).getText());
-        */
     }
 
     @Test
@@ -146,11 +144,11 @@ public class AnswerTest {
 
     @Test
     public void getAnswersShouldReturnANonEmptyCollection() {
-        // assertDoesNotThrow(() -> answerFacade.proposeAnswer(proposeAnswerCommand));
+        assertDoesNotThrow(() -> answerFacade.proposeAnswer(proposeAnswerCommand));
     }
 
     @Test
     public void findAllAndFindWithNullQueryShouldBeTheSame() {
         assertEquals(answerFacade.getAnswers(null), answerFacade.getAllAnswers());
-    }
+    }*/
 }

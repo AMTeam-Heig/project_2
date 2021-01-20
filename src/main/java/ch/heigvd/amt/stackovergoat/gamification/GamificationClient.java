@@ -1,5 +1,6 @@
 package ch.heigvd.amt.stackovergoat.gamification;
 
+import ch.heig.amt.gamification.api.DefaultApi;
 import kong.unirest.GenericType;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
@@ -7,7 +8,18 @@ import kong.unirest.UnirestException;
 import java.util.List;
 
 public class GamificationClient {
-    private enum Endpoint {
+    /*private DefaultApi api;
+
+    public void callapi(){
+        ch.heig.amt.gamification.api.dto.NewApplication gamification = new ch.heig.amt.gamification.api.dto.NewApplication();
+        gamification.setName("GamificationEngine");
+        try {
+            api.createApplication(gamification);
+        }
+    }
+
+
+    /*private enum Endpoint {
         APPLICATIONS("applications"),
         BADGES("badges"),
         EVENTS("events"),
@@ -26,7 +38,7 @@ public class GamificationClient {
         }
     }
 
-    private String gamificationURL = "http://192.168.99.100:9081/";
+    private String gamificationURL = "http://gamification:9081/";
     private Application currentApplication;
 
     public GamificationClient(String name) {
@@ -42,14 +54,14 @@ public class GamificationClient {
             Unirest.shutDown();
             e.printStackTrace();
         }
-    }
+    }*/
 
     /**
      *
      * @param name
      * @return
      */
-    public Application createApplication(String name) {
+    /*public Application createApplication(String name) {
         return Unirest.post(Endpoint.APPLICATIONS.getUrlValue())
                 .body(new NewApplication(name))
                 .asObject(Application.class).getBody();
@@ -60,7 +72,7 @@ public class GamificationClient {
      * @param name
      * @return
      */
-    public Application getApplication(String name) {
+    /*public Application getApplication(String name) {
         return Unirest.get(Endpoint.APPLICATIONS.getUrlValue() + "/" + name)
                 .asObject(Application.class).getBody();
     }
@@ -73,7 +85,7 @@ public class GamificationClient {
     /*
      * BADGES
      */
-    public List<Badge> getBadges() {
+    /*public List<Badge> getBadges() {
         return Unirest.get(Endpoint.BADGES.getUrlValue())
                 .asObject(new GenericType<List<Badge>>() {}).getBody();
     }
@@ -92,7 +104,7 @@ public class GamificationClient {
     /*
      * EVENTS
      */
-    public List<Event> getEvents() {
+    /*public List<Event> getEvents() {
         return Unirest.get(Endpoint.EVENTS.getUrlValue())
                 .asObject(new GenericType<List<Event>>() {}).getBody();
     }
@@ -111,7 +123,7 @@ public class GamificationClient {
     /*
      * RULES
      */
-    public List<Rule> getRules() {
+    /*public List<Rule> getRules() {
         return Unirest.get(Endpoint.RULES.getUrlValue())
                 .asObject(new GenericType<List<Rule>>() {}).getBody();
     }
@@ -130,7 +142,7 @@ public class GamificationClient {
     /*
      * USERS
      */
-    public List<GamificationUser> getUsers() {
+    /*public List<GamificationUser> getUsers() {
         return Unirest.get(Endpoint.USERS.getUrlValue())
                 .asObject(new GenericType<List<GamificationUser>>() {}).getBody();
     }
@@ -154,7 +166,7 @@ public class GamificationClient {
     /*
      * TOP_N
      */
-    public List<GamificationUser> getTopNUsers(int n) {
+    /*public List<GamificationUser> getTopNUsers(int n) {
         return Unirest.get(Endpoint.TOP_N.getUrlValue() + "/" + n)
                 .asObject(new GenericType<List<GamificationUser>>() {}).getBody();
     }
@@ -162,8 +174,8 @@ public class GamificationClient {
     /*
      * USER_EVOLUTION
      */
-    public List<UserEvolution> getUserEvolution(String name) {
+    /*public List<UserEvolution> getUserEvolution(String name) {
         return Unirest.get(Endpoint.USERS_EVOLUTION.getUrlValue() + "/" + name)
                 .asObject(new GenericType<List<UserEvolution>>() {}).getBody();
-    }
+    }*/
 }

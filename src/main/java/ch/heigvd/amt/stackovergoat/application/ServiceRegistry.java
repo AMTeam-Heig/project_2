@@ -3,6 +3,7 @@ package ch.heigvd.amt.stackovergoat.application;
 import ch.heigvd.amt.stackovergoat.application.answer.AnswerFacade;
 import ch.heigvd.amt.stackovergoat.application.answer.ProposeAnswerCommand;
 import ch.heigvd.amt.stackovergoat.application.comment.CommentFacade;
+import ch.heigvd.amt.stackovergoat.application.gamification.GamificationFacade;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.IdentityManagementFacade;
 import ch.heigvd.amt.stackovergoat.application.question.ProposeQuestionCommand;
 import ch.heigvd.amt.stackovergoat.application.question.QuestionFacade;
@@ -71,7 +72,7 @@ public class ServiceRegistry {
     private static IdentityManagementFacade identityManagementFacade;
 
     // Gamification Application
-    private GamificationClient gamificationClient;
+    private GamificationFacade gamificationFacade;
 /*
     public static ServiceRegistry getServiceRegistry() {
         if (singleton == null) {
@@ -182,7 +183,7 @@ public class ServiceRegistry {
         questionFacade = new QuestionFacade(questionRepository, questionCommentRepository, questionVoteRepository);
         identityManagementFacade = new IdentityManagementFacade(userRepository);
         statsFacade = new StatsFacade(questionRepository,userRepository);
-        gamificationClient = new GamificationClient("StackOvergoat");
+        gamificationFacade = new GamificationFacade("StackOvergoat");
     }
 
     public QuestionFacade getQuestionFacade() {
@@ -208,6 +209,6 @@ public class ServiceRegistry {
         return questionVoteFacade;
     }
     public IdentityManagementFacade getIdentityManagementFacade() { return identityManagementFacade; }
-    public GamificationClient getGamificationClient() { return gamificationClient; }
+    public GamificationFacade getGamificationFacade() { return gamificationFacade; }
 
 }

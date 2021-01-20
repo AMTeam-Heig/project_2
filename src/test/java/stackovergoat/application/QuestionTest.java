@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class QuestionTest {
-    private final String TEXT = "Is this really a question ?";
+    /*private final String TEXT = "Is this really a question ?";
     private final String AUTHOR = "Author";
 
     private static IQuestionRepository questionRepository;
@@ -80,5 +80,5 @@ public class QuestionTest {
         QuestionsDTO questionsDTO = questionFacade.getQuestions(QuestionsQuery.builder().idQuestion(id).build());
 
         assertEquals(1, questionsDTO.getQuestions().size());
-    }
+    }*/
 }

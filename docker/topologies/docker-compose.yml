@@ -1,24 +1,30 @@
 version: '3'
 services:
   gamification:
-    image: stellucidam/amt-gamification
+    image: stellucidam/amt-gamification:latest
     container_name: amt_gamification
     ports:
     - "9081:9081"
     - "9444:9444"
     environment:
-    - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/gamification_engine?createDatabaseIfNotExist=true
+    - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/gamification_engine?createDatabaseIfNotExist=true
+    - SPRING_DATASOURCE_DRIVER-CLASS-NAME=com.mysql.cj.jdbc.Driver
+    #- SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL8InnoDBDialect
+    depends_on:
+      - db
   openliberty:
     build: ../images/openliberty
     ports:
       - "9080:9080"
       - "9443:9443"
     links:
-      - mysql:db
+      - db:db
     depends_on:
-      - mysql
+      - db
       - gamification
-  mysql:
+    environment:
+      - GAMIFICATION_SERVER_URL=http://gamification:9081
+  db:
     build: ../images/mysql
     ports:
       - "3306:3306"
@@ -35,6 +41,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
     links:
-      - mysql:db
+      - db:db
     depends_on:
-      - mysql
+      - db
