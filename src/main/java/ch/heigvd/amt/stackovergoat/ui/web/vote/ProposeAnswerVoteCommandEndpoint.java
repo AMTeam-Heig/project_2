@@ -1,9 +1,9 @@
 package ch.heigvd.amt.stackovergoat.ui.web.vote;
 
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
-import ch.heigvd.amt.stackovergoat.application.vote.VoteFacade;
-import ch.heigvd.amt.stackovergoat.application.vote.ProposeVoteCommand;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
+import ch.heigvd.amt.stackovergoat.application.vote.ProposeVoteCommand;
+import ch.heigvd.amt.stackovergoat.application.vote.VoteFacade;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,9 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-
-import static javax.servlet.http.HttpServletResponse.SC_FORBIDDEN;
 
 @WebServlet(name = "SubmitAnswerVoteCommandHandler", urlPatterns = "/submitAnswerVote.do")
 public class ProposeAnswerVoteCommandEndpoint extends HttpServlet {

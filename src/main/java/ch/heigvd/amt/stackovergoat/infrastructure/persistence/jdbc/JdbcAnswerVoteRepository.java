@@ -5,7 +5,6 @@ import ch.heigvd.amt.stackovergoat.domain.vote.IVoteRepository;
 import ch.heigvd.amt.stackovergoat.domain.vote.Vote;
 import ch.heigvd.amt.stackovergoat.domain.vote.VoteId;
 import ch.heigvd.amt.stackovergoat.infrastructure.persistence.exception.IntegrityConstraintViolationException;
-import lombok.Builder;
 
 import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;

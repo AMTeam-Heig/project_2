@@ -1,7 +1,10 @@
 package ch.heigvd.amt.stackovergoat.domain.user;
 
 import ch.heigvd.amt.stackovergoat.domain.IEntity;
-import lombok.*;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.mindrot.jbcrypt.BCrypt;
 
 @Getter

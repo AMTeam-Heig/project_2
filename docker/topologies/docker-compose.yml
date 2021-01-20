@@ -24,6 +24,7 @@ services:
       - gamification
     environment:
       - GAMIFICATION_SERVER_URL=http://gamification:9081
+      - GAMIFICATION_SERVER_NAME=StackOvergoat
   db:
     build: ../images/mysql
     ports:

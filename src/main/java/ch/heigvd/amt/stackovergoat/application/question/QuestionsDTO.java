@@ -1,6 +1,5 @@
 package ch.heigvd.amt.stackovergoat.application.question;
 
-import ch.heigvd.amt.stackovergoat.application.answer.AnswersDTO;
 import ch.heigvd.amt.stackovergoat.domain.comment.Comment;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

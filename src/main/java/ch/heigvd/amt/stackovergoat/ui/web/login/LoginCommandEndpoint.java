@@ -1,12 +1,10 @@
 package ch.heigvd.amt.stackovergoat.ui.web.login;
 
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
-import ch.heigvd.amt.stackovergoat.application.gamification.GamificationFacade;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.IdentityManagementFacade;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.AuthenticateCommand;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.AuthentificationFailedException;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
-import ch.heigvd.amt.stackovergoat.gamification.GamificationClient;
 
 import javax.inject.Inject;
 import javax.inject.Named;

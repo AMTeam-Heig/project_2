@@ -4,7 +4,6 @@ import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
 import ch.heigvd.amt.stackovergoat.application.comment.CommentFacade;
 import ch.heigvd.amt.stackovergoat.application.comment.ProposeCommentCommand;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
-import ch.heigvd.amt.stackovergoat.application.question.QuestionFacade;
 
 import javax.inject.Inject;
 import javax.inject.Named;

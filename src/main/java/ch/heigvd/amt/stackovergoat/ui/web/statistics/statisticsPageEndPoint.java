@@ -1,8 +1,6 @@
 package ch.heigvd.amt.stackovergoat.ui.web.statistics;
 
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
-import ch.heigvd.amt.stackovergoat.application.question.QuestionFacade;
-import ch.heigvd.amt.stackovergoat.application.question.QuestionsDTO;
 import ch.heigvd.amt.stackovergoat.application.statistics.StatsDTO;
 import ch.heigvd.amt.stackovergoat.application.statistics.StatsFacade;
 

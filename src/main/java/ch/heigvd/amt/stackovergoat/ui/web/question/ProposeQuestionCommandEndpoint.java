@@ -1,7 +1,6 @@
 package ch.heigvd.amt.stackovergoat.ui.web.question;
 
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
-import ch.heigvd.amt.stackovergoat.application.identitymgmt.IdentityManagementFacade;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
 import ch.heigvd.amt.stackovergoat.application.question.ProposeQuestionCommand;
 import ch.heigvd.amt.stackovergoat.application.question.QuestionFacade;

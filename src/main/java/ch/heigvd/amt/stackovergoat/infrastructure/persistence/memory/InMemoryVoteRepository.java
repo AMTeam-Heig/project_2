@@ -1,9 +1,9 @@
 package ch.heigvd.amt.stackovergoat.infrastructure.persistence.memory;
 
 import ch.heigvd.amt.stackovergoat.application.vote.VotesQuery;
+import ch.heigvd.amt.stackovergoat.domain.vote.IVoteRepository;
 import ch.heigvd.amt.stackovergoat.domain.vote.Vote;
 import ch.heigvd.amt.stackovergoat.domain.vote.VoteId;
-import ch.heigvd.amt.stackovergoat.domain.vote.IVoteRepository;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,7 +1,6 @@
 package ch.heigvd.amt.stackovergoat.application.gamification;
 
 import ch.heig.amt.gamification.api.DefaultApi;
-import ch.heig.amt.gamification.api.dto.Application;
 import ch.heig.amt.gamification.api.dto.NewApplication;
 
 
@@ -11,9 +10,9 @@ public class GamificationFacade {
 
     public GamificationFacade(String name){
 
-        DefaultApiSingleton.NAME = name;
-
         defaultApi = DefaultApiSingleton.getInstance();
+
+        String defaultname = name;
 
         //Application application;
         NewApplication newApplication;
@@ -22,6 +21,10 @@ public class GamificationFacade {
 
         String url = System.getenv("GAMIFICATION_SERVER_URL");
 
+        if(name.isEmpty()){
+            defaultname = System.getenv("GAMIFICATION_SERVER_NAME");
+        }
+
         if(url.isEmpty()){
             url = "http://192.168.99.100:9081";
         }
@@ -29,10 +32,10 @@ public class GamificationFacade {
         defaultApi.getApiClient().setBasePath(url);
 
         newApplication = new NewApplication();
-        newApplication.setName(name);
+        newApplication.setName(defaultname);
         try {
             defaultApi.createApplication(newApplication);
-            defaultApi.getApiClient().setApiKey(defaultApi.getApplication(name).getApiKey());
+            defaultApi.getApiClient().setApiKey(defaultApi.getApplication(defaultname).getApiKey());
         }catch (Exception e){
             e.printStackTrace();
         }

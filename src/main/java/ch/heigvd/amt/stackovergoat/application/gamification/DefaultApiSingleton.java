@@ -9,8 +9,6 @@ import ch.heig.amt.gamification.api.DefaultApi;
  */
 public class DefaultApiSingleton {
 
-    public static String NAME;
-
     private DefaultApiSingleton(){}
 
     private static DefaultApi INSTANCE = new DefaultApi();

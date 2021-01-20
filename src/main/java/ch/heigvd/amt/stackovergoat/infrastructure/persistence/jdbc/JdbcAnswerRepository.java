@@ -1,12 +1,9 @@
 package ch.heigvd.amt.stackovergoat.infrastructure.persistence.jdbc;
 
 import ch.heigvd.amt.stackovergoat.application.answer.AnswersQuery;
-import ch.heigvd.amt.stackovergoat.application.comment.CommentsDTO;
 import ch.heigvd.amt.stackovergoat.domain.answer.Answer;
 import ch.heigvd.amt.stackovergoat.domain.answer.AnswerId;
 import ch.heigvd.amt.stackovergoat.domain.answer.IAnswerRepository;
-import ch.heigvd.amt.stackovergoat.domain.comment.Comment;
-import ch.heigvd.amt.stackovergoat.domain.comment.CommentId;
 import ch.heigvd.amt.stackovergoat.domain.question.QuestionId;
 
 import javax.annotation.Resource;

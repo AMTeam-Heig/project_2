@@ -4,7 +4,6 @@ import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.IdentityManagementFacade;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.profile.UpdateFailedException;
-import ch.heigvd.amt.stackovergoat.application.identitymgmt.profile.UpdatePasswordCommand;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.profile.UpdateProfileCommand;
 
 import javax.inject.Inject;

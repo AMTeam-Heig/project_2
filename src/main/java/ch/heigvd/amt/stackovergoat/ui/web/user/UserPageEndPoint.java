@@ -10,8 +10,6 @@ import ch.heigvd.amt.stackovergoat.application.comment.CommentsQuery;
 import ch.heigvd.amt.stackovergoat.application.question.QuestionFacade;
 import ch.heigvd.amt.stackovergoat.application.question.QuestionsDTO;
 import ch.heigvd.amt.stackovergoat.application.question.QuestionsQuery;
-import ch.heigvd.amt.stackovergoat.application.user.UsersDTO;
-import ch.heigvd.amt.stackovergoat.domain.comment.Comment;
 
 import javax.inject.Inject;
 import javax.inject.Named;

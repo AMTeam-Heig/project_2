@@ -1,20 +1,5 @@
 package ch.heigvd.amt.stackovergoat.ui.web.filter;
 
-import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
-import ch.heigvd.amt.stackovergoat.application.answer.AnswerFacade;
-import ch.heigvd.amt.stackovergoat.application.answer.AnswersQuery;
-import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
-import ch.heigvd.amt.stackovergoat.application.question.QuestionFacade;
-import ch.heigvd.amt.stackovergoat.application.question.QuestionsQuery;
-
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 //@WebFilter(filterName = "RulesFilter", urlPatterns = "/*")
 public class RulesFilter/* implements Filter*/ {
     /*@Inject

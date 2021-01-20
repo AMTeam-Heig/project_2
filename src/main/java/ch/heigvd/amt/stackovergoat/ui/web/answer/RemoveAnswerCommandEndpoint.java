@@ -1,8 +1,8 @@
 package ch.heigvd.amt.stackovergoat.ui.web.answer;
 
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
-import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
 import ch.heigvd.amt.stackovergoat.application.answer.AnswerFacade;
+import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
 
 import javax.inject.Inject;
 import javax.inject.Named;

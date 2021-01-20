@@ -16,7 +16,6 @@ import ch.heigvd.amt.stackovergoat.domain.comment.ICommentRepository;
 import ch.heigvd.amt.stackovergoat.domain.question.IQuestionRepository;
 import ch.heigvd.amt.stackovergoat.domain.user.IUserRepository;
 import ch.heigvd.amt.stackovergoat.domain.vote.IVoteRepository;
-import ch.heigvd.amt.stackovergoat.gamification.GamificationClient;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -183,7 +182,7 @@ public class ServiceRegistry {
         questionFacade = new QuestionFacade(questionRepository, questionCommentRepository, questionVoteRepository);
         identityManagementFacade = new IdentityManagementFacade(userRepository);
         statsFacade = new StatsFacade(questionRepository,userRepository);
-        gamificationFacade = new GamificationFacade("StackOvergoat");
+        gamificationFacade = new GamificationFacade(System.getenv("GAMIFICATION_SERVER_NAME"));
     }
 
     public QuestionFacade getQuestionFacade() {

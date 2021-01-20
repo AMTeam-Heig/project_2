@@ -11,7 +11,7 @@ public class GamificationQuery {
 
     DefaultApi defaultApi = DefaultApiSingleton.getInstance();
 
-    String appName = "StackOvergoat";//GamificationFacade.NAME;
+    String appName = System.getenv("GAMIFICATION_SERVER_NAME");
     String API_KEY = "";
 
     private void setApiKey(){

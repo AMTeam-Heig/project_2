@@ -1,7 +1,6 @@
 package ch.heigvd.amt.stackovergoat.application.question;
 
 import ch.heigvd.amt.stackovergoat.application.comment.CommentsQuery;
-import ch.heigvd.amt.stackovergoat.application.vote.VotesQuery;
 import ch.heigvd.amt.stackovergoat.domain.comment.ICommentRepository;
 import ch.heigvd.amt.stackovergoat.domain.question.IQuestionRepository;
 import ch.heigvd.amt.stackovergoat.domain.question.Question;
@@ -11,7 +10,6 @@ import ch.heigvd.amt.stackovergoat.infrastructure.persistence.exception.Integrit
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class QuestionFacade {

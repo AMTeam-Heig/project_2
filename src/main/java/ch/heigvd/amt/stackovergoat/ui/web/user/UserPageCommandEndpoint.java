@@ -2,8 +2,6 @@ package ch.heigvd.amt.stackovergoat.ui.web.user;
 
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.IdentityManagementFacade;
-import ch.heigvd.amt.stackovergoat.application.identitymgmt.login.RegisterCommand;
-import ch.heigvd.amt.stackovergoat.application.identitymgmt.login.RegistrationFailedException;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.profile.UpdateFailedException;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.profile.UpdatePasswordCommand;
 
