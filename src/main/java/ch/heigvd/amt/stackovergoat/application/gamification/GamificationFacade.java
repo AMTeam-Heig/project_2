@@ -1,7 +1,11 @@
 package ch.heigvd.amt.stackovergoat.application.gamification;
 
 import ch.heig.amt.gamification.api.DefaultApi;
+import ch.heig.amt.gamification.api.dto.Badge;
 import ch.heig.amt.gamification.api.dto.NewApplication;
+import ch.heig.amt.gamification.api.dto.Rule;
+
+import java.time.LocalDate;
 
 
 public class GamificationFacade {
@@ -40,21 +44,38 @@ public class GamificationFacade {
             e.printStackTrace();
         }
 
+        createBadges();
+        createRules();
 
-        /*try {
-            application = defaultApi.getApplication(name);
-            //on regarde si l'application existe déjà, si oui on la stock dans defaultApi
-            //si non on en crée une nouvelle
-            if(application != null){
-                defaultApi.getApiClient().setApiKey(application.getApiKey());
-            }else{
-                newApplication = new NewApplication();
-                newApplication.setName(name);
-                defaultApi.createApplication(newApplication);
-            }
+
+    }
+
+
+    private void createBadges(){
+        Badge firstQuestionBadge = new Badge();
+        firstQuestionBadge.name(Badges.FIRST_QUESTION.toString())
+                .description("Badge for posting a question");
+        try {
+            defaultApi.createBadge(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstQuestionBadge);
         }catch (Exception e){
             e.printStackTrace();
-        }*/
+        }
+    }
 
+    private void createRules(){
+        Rule questionBadgeRule = new Rule();
+        questionBadgeRule
+                .badgeName(Badges.FIRST_QUESTION.toString())
+                .eventName(Events.ADD_QUESTION.toString())
+                .definition("The user posted his first question")
+                .reputation("")
+                .points(0);
+
+        try {
+            defaultApi.createRule(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), questionBadgeRule);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -42,9 +42,9 @@ public class AdministrationCommandEndpoint extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().removeAttribute("errors");
 
-        Role r = gamificationQuery.getUser(((CurrentUserDTO) req.getSession().getAttribute("currentUser")).getUsername()).getRole();
+        Integer role = gamificationQuery.getUser(((CurrentUserDTO) req.getSession().getAttribute("currentUser")).getUsername()).getRole();
         // TODO check this
-        if (r.getRoleValue().equals(0)) {
+        if (role == 0) {
             System.out.println("I am admin.");
 
             ProposeUserCommand command = ProposeUserCommand.builder()

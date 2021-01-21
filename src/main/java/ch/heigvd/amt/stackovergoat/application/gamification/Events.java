@@ -11,6 +11,10 @@ public enum Events {
         this.eventName = eventName;
     }
 
-    public String eventName;
+    private String eventName;
+
+    public String toString(){
+        return eventName;
+    }
 
 }

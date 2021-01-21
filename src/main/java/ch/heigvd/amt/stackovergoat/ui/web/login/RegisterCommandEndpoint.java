@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet(name = "RegisterCommandEndpoint", urlPatterns = "/register.do")
@@ -53,10 +54,10 @@ public class RegisterCommandEndpoint extends HttpServlet {
 
         User gamificationUser = new User()
                 .username(request.getParameter("username"))
-                .birthdate(LocalDate.EPOCH)
+                .birthdate(LocalDate.now())
                 .points(0)
-                .reputation("")
-                .role(1);
+                .role(1)
+                .badges(Collections.emptyList());
 
         gamificationQuery.createUser(gamificationUser);
 
