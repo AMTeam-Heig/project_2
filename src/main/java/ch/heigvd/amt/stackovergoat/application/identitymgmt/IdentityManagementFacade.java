@@ -1,5 +1,6 @@
 package ch.heigvd.amt.stackovergoat.application.identitymgmt;
 
+import ch.heigvd.amt.stackovergoat.application.gamification.GamificationQuery;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.AuthenticateCommand;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.AuthentificationFailedException;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
@@ -11,9 +12,12 @@ import ch.heigvd.amt.stackovergoat.application.identitymgmt.profile.UpdateProfil
 import ch.heigvd.amt.stackovergoat.domain.user.IUserRepository;
 import ch.heigvd.amt.stackovergoat.domain.user.User;
 
+import java.time.LocalDate;
+
 public class IdentityManagementFacade {
 
     private IUserRepository userRepository;
+    private GamificationQuery gamificationQuery = new GamificationQuery();
 
     public IdentityManagementFacade(IUserRepository userRepository) {
         this.userRepository = userRepository;
@@ -35,6 +39,15 @@ public class IdentityManagementFacade {
                     .clearTextPassword(command.getClearTextPassword())
                     .build();
             userRepository.save(newUser);
+
+            /*ch.heig.amt.gamification.api.dto.User gamificationUser = new ch.heig.amt.gamification.api.dto.User()
+                    .username(command.getUsername())
+                    .birthdate(LocalDate.EPOCH)
+                    .points(0)
+                    .reputation("")
+                    .role(1);
+
+            gamificationQuery.createUser(gamificationUser);*/
         } catch (Exception e) {
             throw new RegistrationFailedException(e.getMessage());
         }
