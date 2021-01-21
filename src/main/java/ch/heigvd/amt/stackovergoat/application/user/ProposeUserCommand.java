@@ -13,4 +13,5 @@ public class ProposeUserCommand {
     private String lastname;
     private String email;
     private String clearTextPassword;
+    private String role;
 }

@@ -131,7 +131,7 @@
                 </div>
                 <div class="text-center px-6">
                     <!-- Form -->
-                    <form action="./register.do" method="POST" accept-charset="utf-8">
+                    <form action="./administration.do" method="POST" accept-charset="utf-8">
                         <div class="form-group row">
                             <div class="col-md-5">
                                 <label for="role" class="col-form-label">Rôle</label>
