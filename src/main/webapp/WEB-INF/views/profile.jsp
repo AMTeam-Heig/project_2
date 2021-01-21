@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css" />
+    <link rel="stylesheet" href="./assets/css/main.css"/>
     <title>User profile</title>
 </head>
 
@@ -58,6 +59,25 @@
                         <h4 class="title">${currentUser.username}</h4>
                         <div class="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
                             ${currentUser.email}
+                        </div>
+
+                        <div>
+                            <table class="badges-table">
+                                <thead>
+                                <tr>
+                                    <th>Badges obtenus</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="badge" items="${badges}">
+                                    <tr>
+                                        <td>$badge</td>
+                                    </tr>
+                                </c:forEach>
+
+                                <!-- and so on... -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <div>
