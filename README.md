@@ -10,6 +10,18 @@ Le but principal de ce projet est d'implémenter une version simplifiée du site
 Il nous a également été demandé de réaliser un moteur de Gamification qui s'occupera d'octroyer certaines entités (comme des badges) et de gérer des événements.
 Par exemple : ajouter un commentaire ou une question et réagir à ces derniers. 
 
+### Fonctionnalités
+Les différentes fonctionnalités sont opérationnelles :
+- Poser une question
+- Commenter une question
+- Répondre à une question
+- Afficher notre profil utilisateur, contenant : 
+  - Les badges obtenus
+  - Le nombre de commentaires / questions posées / réponses
+  - Nos informations utilisateurs
+- Page de statistiques avec notamment le Top users (selon les points obtenus)
+- Accueil, affichant les différentes questions posées
+- Champ de recherche
 
 ### Démarrage
 #### Prérequis
