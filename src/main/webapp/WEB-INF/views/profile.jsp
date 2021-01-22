@@ -65,7 +65,7 @@
                             <table class="badges-table">
                                 <thead>
                                 <tr>
-                                    <th>Badges obtenus</th>
+                                    <th>Obtained Badges</th>
                                     <th>Descriptions</th>
                                 </tr>
                                 </thead>

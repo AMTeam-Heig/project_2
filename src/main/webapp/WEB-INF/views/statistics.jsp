@@ -48,8 +48,8 @@
         <table class="badges-table">
             <thead>
             <tr>
-                <th>Nom d'utilisateur</th>
-                <th>Points obtenus</th>
+                <th>Usernames</th>
+                <th>Points</th>
             </tr>
             </thead>
             <tbody>

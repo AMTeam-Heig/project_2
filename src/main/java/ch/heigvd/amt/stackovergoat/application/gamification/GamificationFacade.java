@@ -4,8 +4,12 @@ import ch.heig.amt.gamification.api.DefaultApi;
 import ch.heig.amt.gamification.api.dto.Badge;
 import ch.heig.amt.gamification.api.dto.NewApplication;
 import ch.heig.amt.gamification.api.dto.Rule;
+import ch.heig.amt.gamification.api.dto.User;
 
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class GamificationFacade {
@@ -46,10 +50,63 @@ public class GamificationFacade {
 
         createBadges();
         createRules();
-
+        //createUsers();
 
     }
 
+
+    public void createUsers(){
+        try {
+            defaultApi.createUser(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), stellucidam());
+            defaultApi.createUser(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), wasadigi());
+            defaultApi.createUser(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), cosmicdarine());
+            defaultApi.createUser(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), bacteria());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private User stellucidam(){
+        User gamificationUser = new User()
+                .username("stellucidam")
+                .birthdate(LocalDate.now())
+                .points(0)
+                .role(0)
+                .badges(Collections.emptyList());
+        return gamificationUser;
+    }
+
+    private User wasadigi(){
+        User gamificationUser = new User()
+                .username("wasadigi")
+                .birthdate(LocalDate.now())
+                .points(0)
+                .role(2)
+                .badges(Collections.emptyList());
+        return gamificationUser;
+    }
+
+    private User cosmicdarine(){
+        User gamificationUser = new User()
+                .username("cosmicdarine")
+                .birthdate(LocalDate.now())
+                .points(0)
+                .role(2)
+                .badges(Collections.emptyList());
+        return gamificationUser;
+    }
+
+    private User bacteria(){
+        List<Badge> badges = new LinkedList<>();
+        badges.add(firstQuestionBadge());
+        User gamificationUser = new User()
+                .username("bacteria")
+                .birthdate(LocalDate.now())
+                .points(1)
+                .role(2)
+                .badges(badges);
+        return gamificationUser;
+    }
 
     private void createBadges(){
         try {

@@ -106,68 +106,44 @@ public class ServiceRegistry {
  */
     private void initValues() {
         userFacade.proposeUser(ProposeUserCommand.builder()
-                .username("qwer")
-                .email("qwer@qwe.com")
-                .firstname("Ano")
-                .lastname("Nymous")
-                .clearTextPassword("1234")
-                .build());
-
-        userFacade.proposeUser(ProposeUserCommand.builder()
-                .username("wasa")
-                .email("wa@sa.lol")
-                .firstname("Wa")
-                .lastname("Sa")
-                .clearTextPassword("digi")
-                .build());
-
-        userFacade.proposeUser(ProposeUserCommand.builder()
-                .username("Clarisse")
-                .email("clacla@fleu.lol")
+                .username("stellucidam")
+                .email("admin@gamification.ch")
+                .clearTextPassword("stellucidam")
                 .firstname("Clarisse")
                 .lastname("Fleurimont")
-                .clearTextPassword("1234")
+                .role("admin")
                 .build());
 
         userFacade.proposeUser(ProposeUserCommand.builder()
-                .username("q")
-                .email("q")
-                .firstname("q")
-                .lastname("q")
-                .clearTextPassword("q")
+                .username("cosmicdarine")
+                .email("cosmicdarine@gamification.ch")
+                .clearTextPassword("cosmicdarine")
+                .firstname("Elodie")
+                .lastname("Lagier")
+                .role("")
+                .build());
+
+        userFacade.proposeUser(ProposeUserCommand.builder()
+                .username("wasadigi")
+                .email("wasadigi@gamification.ch")
+                .clearTextPassword("wasadigi")
+                .firstname("Olivier")
+                .lastname("Liechti")
+                .role("")
+                .build());
+
+        userFacade.proposeUser(ProposeUserCommand.builder()
+                .username("bacteria")
+                .email("bacteria@gamification.ch")
+                .clearTextPassword("bacteria")
+                .firstname("Walid")
+                .lastname("Massaoudi")
+                .role("")
                 .build());
 
         questionFacade.proposeQuestion(ProposeQuestionCommand.builder()
                 .text("Is this real life ??")
-                .author("Mimimi")
-                .build());
-
-        questionFacade.proposeQuestion(ProposeQuestionCommand.builder()
-                .text("What ?")
-                .author("Elodie")
-                .build());
-
-        questionFacade.proposeQuestion(ProposeQuestionCommand.builder()
-                .text("What is GOAT?")
-                .author("Walid")
-                .build());
-
-        answerFacade.proposeAnswer(ProposeAnswerCommand.builder()
-                .questionId(questionFacade.getAllQuestions().getQuestions().get(0).getId())
-                .text("GOAT is love <3")
-                .author("Elodie")
-                .build());
-
-        answerFacade.proposeAnswer(ProposeAnswerCommand.builder()
-                .questionId(questionFacade.getAllQuestions().getQuestions().get(1).getId())
-                .text("Nope")
-                .author("Clarusso")
-                .build());
-
-        answerFacade.proposeAnswer(ProposeAnswerCommand.builder()
-                .questionId(questionFacade.getAllQuestions().getQuestions().get(2).getId())
-                .text("Aw heellllll nooooo!")
-                .author("Walidou")
+                .author("bacteria")
                 .build());
     }
 
@@ -183,6 +159,7 @@ public class ServiceRegistry {
         identityManagementFacade = new IdentityManagementFacade(userRepository);
         statsFacade = new StatsFacade(questionRepository,userRepository);
         gamificationFacade = new GamificationFacade(System.getenv("GAMIFICATION_SERVER_NAME"));
+        //initValues();
     }
 
     public QuestionFacade getQuestionFacade() {
