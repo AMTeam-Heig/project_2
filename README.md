@@ -6,52 +6,66 @@
 
  
 ### Objectif
-The main goal of this project is to implement a simple version of [stack overflow](https://stackoverflow.com/) website :
+Le but principal de ce projet est d'implémenter une version simplifiée du site Stack Overflow. 
+Il nous a également été demandé de réaliser un moteur de Gamification qui s'occupera d'octroyer certaines entités (comme des badges) et de gérer des événements.
+Par exemple : ajouter un commentaire ou une question et réagir à ces derniers. 
 
-### Quick start
 
-It is realy simple to use our application, all you need is to clone the project and run the script :
+### Démarrage
+#### Prérequis
+La version fonctionnelle de ce repo se trouve sur la branch main.
+L'implémentation est optimisée pour Windows. Nous n'avons pas pu le tester sur Linux, cependant les variables d'environnement sont censées s'adapter d'elles-mêmes. 
+Ce projet tourne sur Java 11.0.8
 
-First clone the project 
+
+#### Étapes
+1. Cloner le projet :
 ```bash
-git clone git@github.com:AMTeam-Heig/Project_01.git
+git clone git@github.com:AMTeam-Heig/project_2.git
 ```
 
-Then execute  the script to start the application :
+2. Exécuter le script suivant, à la racine : 
 ```bash
 ./start_docker.sh
 ```
 
-The application can be used over the image in the GitHub Container Registry. That offers the possibility of creating images and saving them under the GitHub Container Registry. Using this feature we created an image containing both the server (openLiberty) and the application.
-All you need to test it is to run this script : 
- ```bash
-docker run 9080:9081 ghcr.io/amteam-heig/project_01/stackover-goat/stackovergoat:latest
- ```
+Optionnel : 
+Cette application peut être utilisée avec une image Docker. Il est possible de modifier le moteur de Gamification en allant sur ce repository : 
+https://github.com/AMTeam-Heig/Gamification-Engine
+
+et le push sur une image Docker, puis modifier le docker-compose.
+
  
- ### Known issues & bugs
- We corrected a few bugs since the presentation :
- - HTML / CSS in single question page,
- - Updating the session when changing user information. 
+ ### Problèmes et bugs connus
+ - Problème d'affichage des questions / réponses qui sortent du cadre.
+ - La page d'administration ne fonctionne pas.
+ - Certaines commandes sont nécessaires afin de purger la base de données;
+ En effet, une application "StackOvergoat" est créée lors du lancement du projet. Si la base de données n'est pas purgée, il est possible que deux instance soient créées et que cela créé des conflits. 
+ Un ```docker system prune``` et ```docker volume prune``` sont donc nécessaires (pas sécurité) avant chaque lancement de l'application.
  
- #### Tests
+ ### Choix d'implémentation
+ #### openAPI tools
+1. Les classes liant notre application à la base de données du Gamification-engine sont générées automatiquement dans le pom.xml grâce à openAPI-tools lors du mvn clean install. 
+
+2. La classe GamificationFacade du package application.gamification créé le lien avec  la base de données grâce à la classe DefaultAPI.
+DefaultAPI est une classe Singleton, qui permet d'instancier un unique lien entre l'application et le moteur, afin d'éviter un surplus de connexions entre ces deux entités. 
  
- ##### Arquillian/Integration tests
- 
- Arquillian & integration tests can be run on branch fb-arquillian. This can be done by running the script ```run-integration-tests.sh```.
- 
- Unfortunately, some compilation errors with maven remain thus we can't be sure these tests work.
- 
- ##### Codecept
- 
- The situation is similar to what was described previously (cf. Arquillian). 
- 
- The scenarios are prepared but we encountered module issues with NodeJS while running them.
- 
- Note that all e2e tests passed on the week preceeding the last commit.
- 
- #### Comments removal
- 
- Adding a comment is functionnal. However, removing them doesn't work. It seems to be related to primary keys in the database.
+3. La classe GamificationQuery implémente les fonctions générées par openAPI-tools et effectue les requêtes vers la base de données du Gamification-Engine.
+
+4. Les règles et les badges sont créés dans la classe GamificationFacade et sont générées depuis son constructeur, qui sera appelé dans la fonction ServiceRegistry.initFacade.
+
+#### Exemple d'utilisation query-event
+Lorsque l'on créé un nouvel utilisateur dans la classe RegisterCommandEndpoint, un utilisateur sera également généré dans la base de données du Gamification Engine via la fonction GamificationQuery.createUser. 
+Un évènement est trigger lors d'une requête POST (typiquement dans QuestionCommandEndpoint du package ui.web.question). Un événement sera créé et on utilisera la fonction GamificationQuery.createEvent.
+Ce sera ainsi le Gamification Engine qui s'occupera de gérer l'évènement selon les règles spécifiées. 
+
+### Tests
+Les tests se trouvent sur le repository Gamification Engine.
+```
+https://github.com/AMTeam-Heig/Gamification-Engine
+```
+
+Des tests unitaires existent dans le repo du projet 1. Nous trouvions inutile car la structure est trop complexe pour faire des tests unitaires liés au Gamificiation Engine et à l'application via une base de données externe.
  
 
 _Team : [Clarisse Fleurimont](https://github.com/Stellucidam), [Baptiste Hardrick](https://github.com/batach31), [Elodie Lagier](https://github.com/CosmicElodie) and [Walid Massaoudi](https://github.com/ChickenLivesMatter)_
