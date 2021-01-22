@@ -109,7 +109,7 @@ public class GamificationFacade {
                 .eventName(Events.ADD_QUESTION.toString())
                 .definition("The user posted his first question")
                 .reputation("")
-                .points(1);
+                .points(0);
         return questionBadgeRule;
     }
 
