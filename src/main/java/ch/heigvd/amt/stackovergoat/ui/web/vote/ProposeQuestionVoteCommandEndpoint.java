@@ -1,6 +1,9 @@
 package ch.heigvd.amt.stackovergoat.ui.web.vote;
 
+import ch.heig.amt.gamification.api.dto.Event;
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
+import ch.heigvd.amt.stackovergoat.application.gamification.Events;
+import ch.heigvd.amt.stackovergoat.application.gamification.GamificationQuery;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
 import ch.heigvd.amt.stackovergoat.application.vote.ProposeVoteCommand;
 import ch.heigvd.amt.stackovergoat.application.vote.VoteFacade;
@@ -22,6 +25,8 @@ public class ProposeQuestionVoteCommandEndpoint extends HttpServlet {
     private ServiceRegistry serviceRegistry;
     private VoteFacade voteFacade;
 
+    private GamificationQuery gamificationQuery = new GamificationQuery();
+
     @Override
     public void init() throws ServletException {
         super.init();
@@ -39,6 +44,15 @@ public class ProposeQuestionVoteCommandEndpoint extends HttpServlet {
                     .userId(user.getId())
                     .isForAnswer(false)
                     .build();
+
+            if(command.isUpVote()) {
+                Event event = new Event()
+                        .name(Events.ADD_UPVOTE.toString())
+                        .points(0)
+                        .username(user.getUsername());
+
+                gamificationQuery.createEvent(event);
+            }
         }
         try {
             voteFacade.proposeVote(command);

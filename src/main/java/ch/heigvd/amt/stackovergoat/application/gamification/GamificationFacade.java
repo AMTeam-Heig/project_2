@@ -93,6 +93,9 @@ public class GamificationFacade {
     private void createRules(){
         try {
             defaultApi.createRule(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstQuestionRule());
+            defaultApi.createRule(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstAnswerRule());
+            defaultApi.createRule(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstCommentRule());
+            defaultApi.createRule(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstUpvoteRule());
 
         }catch (Exception e){
             e.printStackTrace();
@@ -106,7 +109,40 @@ public class GamificationFacade {
                 .eventName(Events.ADD_QUESTION.toString())
                 .definition("The user posted his first question")
                 .reputation("")
-                .points(0);
+                .points(1);
         return questionBadgeRule;
+    }
+
+    private Rule firstCommentRule(){
+        Rule firstCommentRule = new Rule();
+        firstCommentRule
+                .badgeName(Badges.FIRST_COMMENT.toString())
+                .eventName(Events.ADD_COMMENT.toString())
+                .definition("The user posted his first comment")
+                .reputation("")
+                .points(3);
+        return firstCommentRule;
+    }
+
+    private Rule firstAnswerRule(){
+        Rule firstAnswerRule = new Rule();
+        firstAnswerRule
+                .badgeName(Badges.FIRST_ANSWER.toString())
+                .eventName(Events.ADD_ANSWER.toString())
+                .definition("The user posted his first answer")
+                .reputation("")
+                .points(5);
+        return firstAnswerRule;
+    }
+
+    private Rule firstUpvoteRule(){
+        Rule firstUpvoteRule = new Rule();
+        firstUpvoteRule
+                .badgeName(Badges.FIRST_UPVOTE.toString())
+                .eventName(Events.ADD_UPVOTE.toString())
+                .definition("The user gave his first upvote")
+                .reputation("")
+                .points(2);
+        return firstUpvoteRule;
     }
 }

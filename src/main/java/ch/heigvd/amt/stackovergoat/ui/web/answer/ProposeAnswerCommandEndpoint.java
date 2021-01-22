@@ -1,8 +1,11 @@
 package ch.heigvd.amt.stackovergoat.ui.web.answer;
 
+import ch.heig.amt.gamification.api.dto.Event;
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
 import ch.heigvd.amt.stackovergoat.application.answer.AnswerFacade;
 import ch.heigvd.amt.stackovergoat.application.answer.ProposeAnswerCommand;
+import ch.heigvd.amt.stackovergoat.application.gamification.Events;
+import ch.heigvd.amt.stackovergoat.application.gamification.GamificationQuery;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
 
 import javax.inject.Inject;
@@ -22,6 +25,8 @@ public class ProposeAnswerCommandEndpoint extends HttpServlet {
     private ServiceRegistry serviceRegistry;// = ServiceRegistry.getServiceRegistry();
     private AnswerFacade answerFacade ;// = serviceRegistry.getIdentityManagementFacade();
 
+    private GamificationQuery gamificationQuery = new GamificationQuery();
+
     @Override
     public void init() throws ServletException {
         super.init();
@@ -36,6 +41,13 @@ public class ProposeAnswerCommandEndpoint extends HttpServlet {
                     .text(req.getParameter("answer"))
                     .author(user.getUsername())
                     .build();
+
+            Event event = new Event()
+                    .name(Events.ADD_ANSWER.toString())
+                    .points(0)
+                    .username(user.getUsername());
+
+            gamificationQuery.createEvent(event);
         }
 
         answerFacade.proposeAnswer(command);

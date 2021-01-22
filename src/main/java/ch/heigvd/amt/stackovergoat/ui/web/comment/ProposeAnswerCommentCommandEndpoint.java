@@ -1,8 +1,11 @@
 package ch.heigvd.amt.stackovergoat.ui.web.comment;
 
+import ch.heig.amt.gamification.api.dto.Event;
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
 import ch.heigvd.amt.stackovergoat.application.comment.CommentFacade;
 import ch.heigvd.amt.stackovergoat.application.comment.ProposeCommentCommand;
+import ch.heigvd.amt.stackovergoat.application.gamification.Events;
+import ch.heigvd.amt.stackovergoat.application.gamification.GamificationQuery;
 import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
 
 import javax.inject.Inject;
@@ -22,6 +25,8 @@ public class ProposeAnswerCommentCommandEndpoint extends HttpServlet {
     private ServiceRegistry serviceRegistry;// = ServiceRegistry.getServiceRegistry();
     private CommentFacade commentFacade;// = serviceRegistry.getIdentityManagementFacade();
 
+    GamificationQuery gamificationQuery = new GamificationQuery();
+
     @Override
     public void init() throws ServletException {
         super.init();
@@ -38,6 +43,13 @@ public class ProposeAnswerCommentCommandEndpoint extends HttpServlet {
                     .comment(req.getParameter("comment"))
                     .author(user.getUsername())
                     .build();
+
+            Event event = new Event()
+                    .name(Events.ADD_COMMENT.toString())
+                    .points(0)
+                    .username(user.getUsername());
+
+            gamificationQuery.createEvent(event);
         }
 
         commentFacade.proposeComment(command);
