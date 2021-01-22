@@ -66,12 +66,14 @@
                                 <thead>
                                 <tr>
                                     <th>Badges obtenus</th>
+                                    <th>Descriptions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <c:forEach var="badge" items="${badges}">
                                     <tr>
-                                        <td>$badge</td>
+                                        <td>${badge.name}</td>
+                                        <td>${badge.description}</td>
                                     </tr>
                                 </c:forEach>
 

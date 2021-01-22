@@ -43,6 +43,25 @@
         <h2>Number of questions  : </h2>${stats.nbQuestion}<br/>
         <h2>Number of users  : </h2>${stats.nbUser}<br/>
     </section>
+    <section class="relative py-16 bg-gray-300">
+        <div style="text-align: center;"><h2>Top users</h2></div>
+        <table class="badges-table">
+            <thead>
+            <tr>
+                <th>Nom d'utilisateur</th>
+                <th>Points obtenus</th>
+            </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="topuser" items="${topusers}">
+                    <tr>
+                        <td>${topuser.username}</td>
+                        <td>${topuser.points}</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </section>
 </main>
 </body>
 </html>

@@ -7,6 +7,7 @@ import ch.heigvd.amt.stackovergoat.application.answer.AnswersQuery;
 import ch.heigvd.amt.stackovergoat.application.comment.CommentFacade;
 import ch.heigvd.amt.stackovergoat.application.comment.CommentsDTO;
 import ch.heigvd.amt.stackovergoat.application.comment.CommentsQuery;
+import ch.heigvd.amt.stackovergoat.application.gamification.GamificationQuery;
 import ch.heigvd.amt.stackovergoat.application.question.QuestionFacade;
 import ch.heigvd.amt.stackovergoat.application.question.QuestionsDTO;
 import ch.heigvd.amt.stackovergoat.application.question.QuestionsQuery;
@@ -30,6 +31,8 @@ public class UserPageEndPoint extends HttpServlet {
     private QuestionFacade questionFacade;
     private CommentFacade commentAFacade;
     private CommentFacade commentQFacade;
+
+    GamificationQuery gamificationQuery = new GamificationQuery();
 
     @Override
     public void init() throws ServletException {
@@ -68,6 +71,7 @@ public class UserPageEndPoint extends HttpServlet {
         req.setAttribute("nbrComments", commentsADTO.getComments().size() + commentsQDTO.getComments().size());
         req.setAttribute("answers", answersDTO);
         req.setAttribute("nbrAnswers", answersDTO.getAnswers().size());
+        req.setAttribute("badges", gamificationQuery.getUser(req.getSession().getAttribute("currentUsername").toString()).getBadges());
 
         req.setAttribute("errors", errors);
         req.getSession().removeAttribute("errors");

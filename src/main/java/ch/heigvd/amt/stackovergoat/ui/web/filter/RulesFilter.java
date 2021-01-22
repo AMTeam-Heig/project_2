@@ -1,8 +1,23 @@
 package ch.heigvd.amt.stackovergoat.ui.web.filter;
 
-//@WebFilter(filterName = "RulesFilter", urlPatterns = "/*")
-public class RulesFilter/* implements Filter*/ {
-    /*@Inject
+import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
+import ch.heigvd.amt.stackovergoat.application.answer.AnswerFacade;
+import ch.heigvd.amt.stackovergoat.application.answer.AnswersQuery;
+import ch.heigvd.amt.stackovergoat.application.identitymgmt.authenticate.CurrentUserDTO;
+import ch.heigvd.amt.stackovergoat.application.question.QuestionFacade;
+import ch.heigvd.amt.stackovergoat.application.question.QuestionsQuery;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebFilter(filterName = "RulesFilter", urlPatterns = "/*")
+public class RulesFilter implements Filter {
+    @Inject
     @Named("ServiceRegistry")
     private ServiceRegistry serviceRegistry;
     private AnswerFacade answerFacade ;
@@ -15,7 +30,7 @@ public class RulesFilter/* implements Filter*/ {
     }
 
     @Override
-    public void doFilter(ServletRequest  req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
 
@@ -59,5 +74,5 @@ public class RulesFilter/* implements Filter*/ {
     @Override
     public void destroy() {
 
-    }*/
+    }
 }

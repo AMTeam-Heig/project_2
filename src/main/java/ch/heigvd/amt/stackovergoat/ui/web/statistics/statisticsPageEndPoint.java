@@ -1,6 +1,7 @@
 package ch.heigvd.amt.stackovergoat.ui.web.statistics;
 
 import ch.heigvd.amt.stackovergoat.application.ServiceRegistry;
+import ch.heigvd.amt.stackovergoat.application.gamification.GamificationQuery;
 import ch.heigvd.amt.stackovergoat.application.statistics.StatsDTO;
 import ch.heigvd.amt.stackovergoat.application.statistics.StatsFacade;
 
@@ -22,6 +23,8 @@ public class statisticsPageEndPoint extends HttpServlet {
     private ServiceRegistry serviceRegistry;// = ServiceRegistry.getServiceRegistry();
     private StatsFacade statsFacade;// = serviceRegistry.getIdentityManagementFacade();
 
+    private GamificationQuery gamificationQuery = new GamificationQuery();
+
     @Override
     public void init() throws ServletException {
         super.init();
@@ -31,6 +34,7 @@ public class statisticsPageEndPoint extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StatsDTO  statistiques= statsFacade.getStats();
         req.setAttribute("stats", statistiques);
+        req.setAttribute("topusers", gamificationQuery.getUsersByScore());
         req.getRequestDispatcher("/WEB-INF/views/statistics.jsp").forward(req, resp);
     }
 }

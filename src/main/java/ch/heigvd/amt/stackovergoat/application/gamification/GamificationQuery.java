@@ -7,6 +7,8 @@ import ch.heig.amt.gamification.api.dto.Event;
 import ch.heig.amt.gamification.api.dto.Rule;
 import ch.heig.amt.gamification.api.dto.User;
 
+import java.util.*;
+
 public class GamificationQuery {
 
     DefaultApi defaultApi = DefaultApiSingleton.getInstance();
@@ -103,4 +105,26 @@ public class GamificationQuery {
         return rule;
     }
 
+    public List<User> getUsersByScore(){
+        List<User> users = new LinkedList<>();
+        try {
+            setApiKey();
+            users = defaultApi.getUsers(API_KEY);
+            users.sort(Comparator.comparing(User::getPoints));
+            Collections.reverse(users);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+    private LinkedList<String> getBadgeNames(List<Badge> badges){
+        LinkedList<String> badgeNames = new LinkedList<>();
+        for(Badge b : badges){
+            badgeNames.add(b.getName());
+        }
+        return badgeNames;
+    }
+
 }
+

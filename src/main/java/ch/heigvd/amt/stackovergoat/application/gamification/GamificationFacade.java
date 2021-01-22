@@ -52,17 +52,54 @@ public class GamificationFacade {
 
 
     private void createBadges(){
-        Badge firstQuestionBadge = new Badge();
-        firstQuestionBadge.name(Badges.FIRST_QUESTION.toString())
-                .description("Badge for posting a question");
         try {
-            defaultApi.createBadge(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstQuestionBadge);
+            defaultApi.createBadge(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstQuestionBadge());
+            defaultApi.createBadge(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstAnswerBadge());
+            defaultApi.createBadge(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstCommentBadge());
+            defaultApi.createBadge(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstUpvoteBadge());
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
+    private Badge firstQuestionBadge(){
+        Badge firstQuestionBadge = new Badge();
+        firstQuestionBadge.name(Badges.FIRST_QUESTION.toString())
+                .description("Badge for posting a question");
+        return firstQuestionBadge;
+    }
+
+    private Badge firstCommentBadge(){
+        Badge firstCommentBadge = new Badge();
+        firstCommentBadge.name(Badges.FIRST_COMMENT.toString())
+                .description("Badge for posting a comment");
+        return firstCommentBadge;
+    }
+
+    private Badge firstAnswerBadge(){
+        Badge firstAnswerBadge = new Badge();
+        firstAnswerBadge.name(Badges.FIRST_ANSWER.toString())
+                .description("Badge for posting an answer");
+        return firstAnswerBadge;
+    }
+
+    private Badge firstUpvoteBadge(){
+        Badge firstUpvoteBadge = new Badge();
+        firstUpvoteBadge.name(Badges.FIRST_UPVOTE.toString())
+                .description("Badge for posting an upvote");
+        return firstUpvoteBadge;
+    }
+
     private void createRules(){
+        try {
+            defaultApi.createRule(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), firstQuestionRule());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private Rule firstQuestionRule(){
         Rule questionBadgeRule = new Rule();
         questionBadgeRule
                 .badgeName(Badges.FIRST_QUESTION.toString())
@@ -70,12 +107,6 @@ public class GamificationFacade {
                 .definition("The user posted his first question")
                 .reputation("")
                 .points(0);
-
-        try {
-            defaultApi.createRule(defaultApi.getApplication(System.getenv("GAMIFICATION_SERVER_NAME")).getApiKey(), questionBadgeRule);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        return questionBadgeRule;
     }
 }
