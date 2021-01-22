@@ -16,6 +16,7 @@ First clone the project
 ```bash
 git clone git@github.com:AMTeam-Heig/Project_01.git
 ```
+
 Then execute  the script to start the application :
 ```bash
 ./start_docker.sh
@@ -24,7 +25,7 @@ Then execute  the script to start the application :
 The application can be used over the image in the GitHub Container Registry. That offers the possibility of creating images and saving them under the GitHub Container Registry. Using this feature we created an image containing both the server (openLiberty) and the application.
 All you need to test it is to run this script : 
  ```bash
-docker run 9080:9080 ghcr.io/amteam-heig/project_01/stackover-goat/stackovergoat:latest
+docker run 9080:9081 ghcr.io/amteam-heig/project_01/stackover-goat/stackovergoat:latest
  ```
  
  ### Known issues & bugs
